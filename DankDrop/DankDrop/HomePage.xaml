@@ -18,7 +18,7 @@
       <ListView x:Name="list">
         <ListView.ItemTemplate>
           <DataTemplate>
-            <TextCell Text="{Binding UUID}" Detail="{Binding MajorMinor}" />
+            <TextCell Text="{Binding Name}" Detail="{Binding ID}" />
           </DataTemplate>
         </ListView.ItemTemplate>
       </ListView>

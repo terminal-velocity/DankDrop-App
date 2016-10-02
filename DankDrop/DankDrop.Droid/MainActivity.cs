@@ -9,14 +9,14 @@ using Android.OS;
 
 namespace DankDrop.Droid
 {
-    [Activity(Label = "DankDrop", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
+    [Activity(Label = "Dank Drop", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    public class MainActivity : Xamarin.Forms.Platform.Android.FormsApplicationActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            global::Xamarin.Forms.Forms.Init(this, bundle);
+            Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App(new AndroidRanger(this)));
         }
     }

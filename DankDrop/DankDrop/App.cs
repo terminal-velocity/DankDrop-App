@@ -9,12 +9,23 @@ namespace DankDrop
 {
     public class App : Application
     {
+        private const string ESTIMOTE_DEFAULT_UUID = "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
+
         private IBeaconRanger _ranger;
 
         public App(IBeaconRanger ranger)
         {
             _ranger = ranger;
-            MainPage = new HomePage(_ranger);
+            var home = new HomePage(_ranger);
+            var nav = new NavigationPage(home);
+            home.OnBeaconChosen += (sender, dropPoint) =>
+            {
+                nav.PushAsync(new MemePage(dropPoint));
+            };
+
+            nav.Icon = "icon.png";
+            nav.Title = "Dank Drop";
+            MainPage = nav;
         }
 
         protected override void OnStart()
@@ -27,14 +38,14 @@ namespace DankDrop
             await _ranger.EndRanging();
         }
 
-        protected async override void OnResume()
+        protected override void OnResume()
         {
             go();
         }
 
         private async void go()
         {
-            await _ranger.BeginRanging("4DF5966C-BB34-775C-A509-3A46726C5B7B", null, null);
+            await _ranger.BeginRanging(ESTIMOTE_DEFAULT_UUID, null, null);
         }
     }
 }

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:a="clr-namespace:DankDrop;assembly=DankDrop"
+             x:Class="DankDrop.MemePage">
+  <ContentPage.Content>
+    <StackLayout Orientation="Vertical">
+      <Button x:Name="SubmitMemeButton" HorizontalOptions="FillAndExpand" Text="Submit Meme" />
+      <ListView x:Name="list" HasUnevenRows="True">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                <a:AspectRatioContainer AspectRatio="1">
+                  <Image Source="{Binding ImageUrl}" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
+                </a:AspectRatioContainer>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                  <Label Text="{Binding Name}"
+                         FontSize="Medium"
+                         HorizontalOptions="FillAndExpand"
+                         HorizontalTextAlignment="Start"
+                         VerticalTextAlignment="Center"/>
+                  <Button Text="👌" />
+                  <Button Text="👎" />
+                  <Button Text="⚠️" />
+                </StackLayout>
+                <ProgressBar HorizontalOptions="FillAndExpand" Progress="{Binding Rating}" />
+              </StackLayout>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>
